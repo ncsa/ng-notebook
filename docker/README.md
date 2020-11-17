@@ -1,0 +1,1 @@
+This directory contains a Dockerfile for building a Docker image. See `README.md` in the top-level project directory for instructions.

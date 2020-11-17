@@ -1,0 +1,92 @@
+
+.container {
+  white-space: nowrap;
+  width: 905px;
+  font-family: sans-serif;
+}
+
+svg {
+  display: inline-block;
+  width: 600px;
+  vertical-align: bottom;
+}
+
+.breed-detail {
+  display: inline-block;
+  width: 300px;
+  vertical-align: bottom;
+  margin: 0 0 35px 20px;
+}
+
+rect {
+  fill: steelblue;
+  cursor: pointer;
+}
+
+.tick {
+  opacity: 1;
+}
+
+.tick line {
+  stroke: currentColor;
+}
+
+.tick text {
+  fill: currentColor;
+}
+
+.domain {
+  stroke: currentColor;
+}
+
+.x-axis-group {
+  fill: none;
+  font-size: 10pt;
+  text-anchor: middle;
+}
+
+.y-label {
+  fill: currentColor;
+  text-anchor: start;
+}
+
+.y-axis-group {
+  fill: none;
+  font-size: 10pt;
+  text-anchor: end;
+}
+
+.spinner {
+  display: inline-block;
+  width: 200px;
+  height: 200px;
+}
+
+.spinner:after {
+  content: " ";
+  display: block;
+  width: 128px;
+  height: 128px;
+  margin: 8px;
+  border-radius: 50%;
+  border: 6px solid #000;
+  border-color: steelblue transparent steelblue transparent;
+  animation: spinner 1.2s linear infinite;
+}
+
+@keyframes spinner {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+  
+.breed-pic { 
+  height: 200px;
+}
+
+.explanation {
+  font-style: italic;
+}

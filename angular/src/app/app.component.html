@@ -1,0 +1,37 @@
+<div class="container">
+  <svg [attr.viewBox]="'0,0,' + this.width + ',' + this.height">
+    <g>
+      <rect *ngFor="let breed of breedData; index as i" [attr.x]="xScale(i)" [attr.y]="yScale(breed.count)"
+        [attr.height]="yScale(0) - yScale(breed.count)" [attr.width]="xScale.bandwidth()"
+        (mouseover)="showBreedInfo(breed)"
+        (mouseout)="showBreedInfo(null)"></rect>
+    </g>
+    <g class="x-axis-group" [attr.transform]="'translate(0,' + (height - margin.bottom) + ')'">
+      <path class="domain" [attr.d]="'M' + (0.5 + margin.left) + ',0.5H' + (0.5 + width)"></path>
+      <g *ngFor="let datum of breedData; index as i" class="tick"
+        [attr.transform]="'translate(' + (xScale(i) + 0.5 * xScale.bandwidth()) + ',0)'">
+        <line y2="6"></line>
+        <text y="9" dy="0.71em">{{ datum.label }}</text>
+      </g>
+    </g>
+    <g class="y-axis-group" [attr.transform]="'translate(' + margin.left + ',0)'">
+      <g *ngFor="let tick of yScale.ticks(10); index as i" class="tick"
+        [attr.transform]="'translate(0,' + (yScale(tick) + 0.5) + ')'">
+        <line x2="-6"></line>
+        <text x="-9" dy="0.32em">{{ tick }}</text>
+      </g>
+      <text class="y-label" [attr.x]="-margin.left" y="10">{{ title }}</text>
+    </g>
+  </svg>
+
+  <div class="breed-detail">
+    <div *ngIf="selectedBreed === null" class="explanation">
+      Hover over a bar in the plot for breed details.
+    </div>
+    <div *ngIf="selectedBreed !== null">
+      <div *ngIf="selectedBreed.imgUrl === null" class="spinner"></div>
+      <img *ngIf="selectedBreed.imgUrl !== null" class="breed-pic" [src]="selectedBreed.imgUrl">
+      <div class="explanation">Random {{ selectedBreed.label }} picture from <a href="https://dog.ceo/dog-api">Dog API</a>.</div>
+    </div>
+  </div>
+</div>
